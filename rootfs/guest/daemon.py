@@ -67,6 +67,26 @@ def function(*args):
         return [ts1, ts2]
     raise RuntimeError('unknown function')
 
+if __name__ == "__main__":
+    from sys import argv
+    funcname = argv[1]
+    hostname = "127.0.0.1"
+    password = "123456"
+    request_args = {
+        "num_of_rows": 10,
+        "num_of_cols": 10,
+        "args": [],
+        "script": "",
+        "size": 10,
+        "input_object_key": "400K.jpg",
+        "output_object_key_prefix": "/tmp/",
+        "output_object_key":"tmp",
+        "n":10,
+        "length_of_message":100,
+        "num_of_iterations":100
+    }
+    print(function(funcname, hostname, password, request_args))
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
