@@ -69,6 +69,9 @@ def function(*args):
 
 if __name__ == "__main__":
     from sys import argv
+    if(len(argv)<2):
+        print("Usage: python ./daemon.py funcname")
+        exit()
     funcname = argv[1]
     hostname = "127.0.0.1"
     password = "123456"
