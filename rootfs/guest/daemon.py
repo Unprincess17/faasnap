@@ -1,4 +1,5 @@
-import time, sys, mmap
+import json
+import time, sys, mmap, os
 import subprocess
 
 from flask import Flask, request
@@ -25,7 +26,7 @@ def function(*args):
         return [ts, ts]
     if funcname == 'allocate':
         ts1 = time.time()
-        l = [1] * int(request_args['size'])
+        l = [1] * int(request_args['size']) # 10MB = 10 * 10^6 * 8 = 8*10^7
         ts2 = time.time()
         return [ts1, ts2]
     if funcname == 'image':
@@ -80,7 +81,7 @@ if __name__ == "__main__":
         "num_of_cols": 10,
         "args": [],
         "script": "",
-        "size": 10,
+        "size": 80000000,
         "input_object_key": "400K.jpg",
         "output_object_key_prefix": "/tmp/",
         "output_object_key":"tmp",
@@ -88,7 +89,13 @@ if __name__ == "__main__":
         "length_of_message":100,
         "num_of_iterations":100
     }
-    print(function(funcname, hostname, password, request_args))
+    configfile = "faasnap/rootfs/guest/config.json"
+    if(os.path.exists(configfile)):
+        with open(configfile, "r") as cf:
+            request_args = json.load(cf) 
+
+    times = function(funcname, hostname, password, request_args)
+    print(times[1]-times[0])
 
 @app.route('/')
 def hello_world():

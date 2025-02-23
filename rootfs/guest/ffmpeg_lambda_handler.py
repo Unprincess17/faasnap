@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         f.write(r.get(input_object_key))
 
     ts1 = time()
-    run_and_check('ffmpeg -y -i %s/%s -vf hflip %s/%s' % (tmp, input_object_key, tmp, output_object_key), 'ffmpeg')
+    run_and_check('ffmpeg -y -i %s/%s -vf hflip %s/%s' % (tmp, input_object_key, tmp, output_object_key), 'Check ffmpeg command')
     ts2 = time()
     with open('%s/%s' % (tmp, output_object_key), 'rb') as f:
         r.set(output_object_key, f.read())

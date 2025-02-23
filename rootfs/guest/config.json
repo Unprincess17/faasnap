@@ -1,0 +1,14 @@
+{
+    "num_of_rows": "1000",
+    "num_of_cols": "100",
+    "args": [],
+    "script": "",
+    "size": "80000000",
+    "input_object_key": "pexels-photo-2051572.jpeg",
+    "output_object_key_prefix": "/tmp/",
+    "output_object_key": "tmp",
+    "n": "1000",
+    "length_of_message": "100",
+    "num_of_iterations": "100",
+    "model_object_key": "resnet50-19c8e357.pth"
+}
