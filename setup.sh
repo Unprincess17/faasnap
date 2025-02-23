@@ -5,6 +5,6 @@ sudo pip install redis flask pillow ffmpeg chameleon igraph  && \
 sudo pip install torch==1.9.1+cpu torchvision==0.10.1+cpu torchaudio==0.9.1 --index-url https://download.pytorch.org/whl/cpu && \
 
 sudo redis-cli CONFIG SET requirepass "123456" && \
-sudo systemctl restart redis
+sudo systemctl restart redis            && \
 
-python populate_resource.py             && \
+python populate_resource.py             
